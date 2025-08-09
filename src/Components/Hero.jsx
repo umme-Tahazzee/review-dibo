@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+
+//shadcn
 import { FaStar } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { motion } from "framer-motion";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 export default function ReviewsPage() {
@@ -17,18 +18,22 @@ export default function ReviewsPage() {
   const [search, setSearch] = useState("");
   const [editId, setEditId] = useState(null);
 
+  //Check the browser have any reviews
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("reviews")) || [];
     setReviews(stored);
   }, []);
 
+  //
   useEffect(() => {
     localStorage.setItem("reviews", JSON.stringify(reviews));
   }, [reviews]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!shopName || !reviewText || rating === 0) return;
+     e.preventDefault();
+     if (!shopName || !reviewText || rating === 0)  return;
+  
 
     const newReview = {
       id: editId || Date.now(),
@@ -66,14 +71,7 @@ export default function ReviewsPage() {
   );
 
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: { delay: 0.3, duration: 0.4, ease: "easeIn" },
-      }}
-      className="py-6"
-    >
+   
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* Left Side: Form */}
@@ -130,59 +128,9 @@ export default function ReviewsPage() {
           </div>
 
           {/* Right Side: Search + Reviews */}
-          <div className="flex-1 order-1 xl:order-none">
-            <div className="p-6 bg-transparent rounded-xl">
-              <h3 className="text-2xl text-accent mb-4">All Reviews</h3>
-
-              <Input
-                placeholder="Search by shop name..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="mb-4"
-              />
-
-              <ScrollArea className="h-[70vh] pr-2 ">
-                {filteredReviews.length > 0 ? (
-                  filteredReviews.map((r) => (
-                    <div
-                      key={r.id}
-                      className="border border-gray-700 p-4 rounded-lg mb-4 bg-gray-600 space-y-3"
-                    >
-                      <h4 className="font-bold text-white text-4xl">{r.shopName}</h4>
-                      <div className="flex text-yellow-500 mb-1">
-                        {[...Array(r.rating)].map((_, i) => (
-                          <FaStar key={i} />
-                        ))}
-                      </div>
-                      <p className="text-white/80">{r.reviewText}</p>
-                      <small className="text-gray-400 block">{r.date}</small>
-                      <div className="mt-2 flex gap-2">
-                        <Button
-                          onClick={() => handleEdit(r)}
-                          className="bg-green-500 hover:bg-green-600 text-white"
-                          size="sm"
-                        >
-                          Edit
-                        </Button>
-                        <Button
-                          onClick={() => handleDelete(r.id)}
-                          className=" "
-                          size="sm"
-                        >
-                         < RiDeleteBin6Line className="size-6 
-                         text-red-500 hover:bg-red-500"/>
-                        </Button>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-gray-400">No reviews found.</p>
-                )}
-              </ScrollArea>
-            </div>
-          </div>
+          
         </div>
       </div>
-    </motion.section>
+    
   );
 }

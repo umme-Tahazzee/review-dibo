@@ -4,6 +4,8 @@
 /* ===== 2. TAILWIND IMPORT ===== */
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "react-toastify/dist/ReactToastify.css";
+
 
 /* ===== 3. DARK MODE VARIANT ===== */
 @custom-variant dark (&:is(.dark *));
