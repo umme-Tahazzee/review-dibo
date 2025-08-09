@@ -4,10 +4,10 @@ import React, { useState, useEffect } from "react";
 
 //shadcn
 import { FaStar } from "react-icons/fa";
-import { Button } from "@/tempcomponents/ui/button";
-import { Input } from "@/tempcomponents/ui/input";
-import { Textarea } from "@/tempcomponents/ui/textarea";
-import { ScrollArea } from "@/tempcomponents/ui/scroll-area";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 export default function ReviewsPage() {
