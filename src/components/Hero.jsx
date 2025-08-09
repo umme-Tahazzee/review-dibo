@@ -75,7 +75,7 @@ export default function ReviewsPage() {
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* Left Side: Form */}
-          <div className="xl:w-[50%] order-2 xl:order-none">
+          <div className="xl:w-[50%] order-1 xl:order-none">
             <form
               onSubmit={handleSubmit}
               className="flex flex-col gap-6 p-10 bg-transparent rounded-xl"
@@ -128,7 +128,7 @@ export default function ReviewsPage() {
           </div>
 
           {/* Right Side: Search + Reviews */}
-          <div className="flex-1 order-1 xl:order-none">
+          <div className="flex-1 order-2 xl:order-none">
             <div className="p-6 bg-transparent rounded-xl">
               <h3 className="text-2xl text-accent mb-4">All Reviews</h3>
 
