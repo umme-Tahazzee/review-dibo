@@ -121,14 +121,64 @@ export default function ReviewsPage() {
               />
 
               {/* Submit Button */}
-              <Button type="submit" size="md" className="max-w-40 text-xl ">
+              <Button type="submit" size="md" className="max-w-40 text-xl text-[#84F729]  ">
                 {editId ? "Update Review" : "Submit Review"}
               </Button>
             </form>
           </div>
 
           {/* Right Side: Search + Reviews */}
-          
+          <div className="flex-1 order-1 xl:order-none">
+            <div className="p-6 bg-transparent rounded-xl">
+              <h3 className="text-2xl text-accent mb-4">All Reviews</h3>
+
+              <Input
+                placeholder="Search by shop name..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="mb-4"
+              />
+
+              <ScrollArea className="h-[70vh] pr-2 ">
+                {filteredReviews.length > 0 ? (
+                  filteredReviews.map((r) => (
+                    <div
+                      key={r.id}
+                      className="border border-gray-700 p-4 rounded-lg mb-4 bg-gray-600 space-y-3"
+                    >
+                      <h4 className="font-bold text-white text-4xl">{r.shopName}</h4>
+                      <div className="flex text-yellow-500 mb-1">
+                        {[...Array(r.rating)].map((_, i) => (
+                          <FaStar key={i} />
+                        ))}
+                      </div>
+                      <p className="text-white/80">{r.reviewText}</p>
+                      <small className="text-gray-400 block">{r.date}</small>
+                      <div className="mt-2 flex gap-2">
+                        <Button
+                          onClick={() => handleEdit(r)}
+                          className="bg-green-500 hover:bg-green-600 text-white"
+                          size="sm"
+                        >
+                          Edit
+                        </Button>
+                        <Button
+                          onClick={() => handleDelete(r.id)}
+                          className=" "
+                          size="sm"
+                        >
+                         < RiDeleteBin6Line className="size-6 
+                         text-red-500 hover:bg-red-500"/>
+                        </Button>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-gray-400">No reviews found.</p>
+                )}
+              </ScrollArea>
+            </div>
+          </div>
         </div>
       </div>
     

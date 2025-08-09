@@ -13,9 +13,9 @@ return (
        className="py-6"
      >
     <div className='m-5'>
-      <h1 className="text-5xl md:text-6xl font-bold font-mono tracking-normal 
+      <h1 className="text-5xl md:text-6xl font-bold font-mono tracking-widest 
       text-center">
-      Your <span className="text-green-500 animate-ping-fast ">Voice</span>, Our Platform
+      Your <span className="text-[#84F729] animate-ping-fast font-sans  ">Voice</span> Our Platform
       </h1>
 
     </div>
