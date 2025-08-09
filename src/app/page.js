@@ -1,6 +1,6 @@
-import Header from '@/Components/Header';
-import Hero from '../Components/Hero'
-import Banner from '../Components/Banner'
+import Header from '@/components/Header';
+import Hero from '../components/Hero'
+import Banner from '../components/Banner'
 
 
 export default function Home() {
